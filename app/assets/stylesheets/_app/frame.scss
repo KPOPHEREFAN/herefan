@@ -1,9 +1,32 @@
 #absolute_header{
-	position:absolute;height:150px;width:100%;background-color:#f5146c;
+	position: absolute;
+	height: 150px;
+	width: 100%;
+	background-color: #f5146c;
+	#logo{
+		margin-top: 15px;
+		display: inline-block;
+		margin-left: 50%;
+		transform: translateX(-50%);
+	}
 }
+
 #header{
-	&[data-current-skin="navbar_color"]{background-color: #0b1471}
-}
-#main{
-	padding-top: 170px;
+	&[data-current-skin = "navbar_color"]{
+		background-color: #171b48;
+	}
+	.dropdown-menu{
+		margin-top: 25px;
+		border: none;
+		.dropdown_pointer{
+			width: 0;
+			height: 0;
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;
+			border-bottom: 20px solid white;
+			margin-top: -20px;
+			margin-left: 265px;
+			display:block;
+		}
+	}
 }
