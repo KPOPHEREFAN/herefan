@@ -3,19 +3,14 @@
     <head>
         <title>Herefan</title>
 <%= csrf_meta_tags %>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <%= stylesheet_link_tag    'application', media: 'all' %>
 <%= javascript_include_tag 'application' %>
     </head>
     <body>
-<%= render partial: "/layouts/parts/navbar" %>
-		        <section id="main" data-layout="layer-1">
-            <%= yield %>
-		        </section>
+<%= render partial: "/layouts/parts/navbar"%>
+		<section id="main" data-layout="layer-1">
+<%= yield %>
+		</section>
     </body>
 </html>
-
-<!-- site frame -->
-<style>
-    [data-current-skin="jeaeun_green"]{background-color: #70C7BE}
-    #main{padding-top: 80px;}
-</style>
