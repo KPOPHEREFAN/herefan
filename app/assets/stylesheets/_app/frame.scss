@@ -1,0 +1,9 @@
+#absolute_header{
+	position:absolute;height:150px;width:100%;background-color:#f5146c;
+}
+#header{
+	&[data-current-skin="navbar_color"]{background-color: #0b1471}
+}
+#main{
+	padding-top: 170px;
+}
