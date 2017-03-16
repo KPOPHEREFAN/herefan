@@ -1,0 +1,32 @@
+<div id="absolute_header">
+    <div id="logo">
+<%= render "/layouts/svgs/logo"%>
+    </div>
+</div>
+<header id="header" class="clearfix" data-current-skin="navbar_color">
+    <ul class="header-inner">
+        <li class="pull-right">
+            <ul class="top-menu">
+                <li class="dropdown hidden-xs">
+                    <a data-toggle="dropdown" href="" aria-expanded="true">
+                        <span style="font-size:20px">Join</span>
+                    </a>
+                    <div class="dropdown-menu pull-right dropdown-menu-lg">
+                        <span class="dropdown_pointer"></span>
+                        <div class="listview join">
+                            <h1>Welcom to Here Fans!</h1>
+                            <div class="login_form">
+                            <%unless user_signed_in?%>
+<%= render "/users/sessions/new" %>
+                            <%else%>
+                                <a data-method="delete" href="/users/sign_out">LOGOUT</a>
+                            <%end%>
+                            </div>   
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</header>
+

@@ -2,14 +2,15 @@
 <html>
     <head>
         <title>Herefan</title>
-        <%= csrf_meta_tags %>
-
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<%= csrf_meta_tags %>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<%= stylesheet_link_tag    'application', media: 'all' %>
+<%= javascript_include_tag 'application' %>
     </head>
-
     <body>
-        <%= render partial: 'flash_alert_ui_set', layout: false, locale: { notice: notice, alert: alert } %>
-        <%= yield %>
+<%= render partial: "/layouts/parts/navbar" %>
+		<section id="main" data-layout="layer-1">
+<%= yield %>
+		</section>
     </body>
 </html>
