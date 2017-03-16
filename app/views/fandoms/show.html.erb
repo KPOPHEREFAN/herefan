@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @fandom.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @fandom.title %>
+</p>
+
+<p>
+  <strong>Subtitle:</strong>
+  <%= @fandom.subtitle %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @fandom.description %>
+</p>
+
+<p>
+  <strong>Profile img:</strong>
+  <%= @fandom.profile_img %>
+</p>
+
+<p>
+  <strong>Bg img:</strong>
+  <%= @fandom.bg_img %>
+</p>
+
+<p>
+  <strong>Admin:</strong>
+  <%= @fandom.admin_id %>
+</p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @fandom.artist %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @fandom.group %>
+</p>
+
+<%= link_to 'Edit', edit_fandom_path(@fandom) %> |
+<%= link_to 'Back', fandoms_path %>

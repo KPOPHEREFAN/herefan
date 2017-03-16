@@ -10,16 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316035129) do
+ActiveRecord::Schema.define(version: 20170316074646) do
 
   create_table "fan_ids", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
+    t.integer  "fandom_id"
     t.string   "fan_img"
     t.string   "nickname"
     t.string   "msg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_fan_ids_on_user_id", using: :btree
+  end
+
+  create_table "fandoms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "admin_id"
+    t.string   "name"
+    t.string   "title"
+    t.string   "subtitle"
+    t.string   "description"
+    t.string   "bg_img"
+    t.string   "profile_img"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
