@@ -1,0 +1,42 @@
+<%= form_for(fan_id) do |f| %>
+  <% if fan_id.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fan_id.errors.count, "error") %> prohibited this fan_id from being saved:</h2>
+
+      <ul>
+      <% fan_id.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fandom_id %>
+    <%= f.text_field :fandom_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :fan_img %>
+    <%= f.text_field :fan_img %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nickname %>
+    <%= f.text_field :nickname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :msg %>
+    <%= f.text_field :msg %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  fandom: one
+  fan_img: MyString
+  nickname: MyString
+  msg: MyString
+
+two:
+  user: two
+  fandom: two
+  fan_img: MyString
+  nickname: MyString
+  msg: MyString

@@ -1,0 +1,2 @@
+module FanIdsHelper
+end

@@ -6,6 +6,8 @@ class User < ApplicationRecord
             :recoverable, :rememberable, :trackable, :validatable,
             :omniauthable, :omniauth_providers => [:facebook, :twitter, :google_oauth2]
     
+    has_many :fan_ids
+    
     def has_mail?
         self.mail.length.zero? ? true : false
     end

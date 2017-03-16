@@ -3,6 +3,7 @@
 
 Rails.application.routes.draw do
     
+  resources :fan_ids
     # Devise routers
     devise_for :users, controllers: {
         sessions: 'users/sessions',
