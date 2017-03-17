@@ -15,11 +15,12 @@ ActiveRecord::Schema.define(version: 20170316074646) do
   create_table "fan_ids", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
     t.integer  "fandom_id"
+    t.boolean  "active",     default: true, null: false
     t.string   "fan_img"
     t.string   "nickname"
     t.string   "msg"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.index ["user_id"], name: "index_fan_ids_on_user_id", using: :btree
   end
 

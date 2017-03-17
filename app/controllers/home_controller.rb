@@ -37,6 +37,7 @@ class HomeController < ApplicationController
     end
     
     def select
+        fan_id = current_user.fan_ids
         # 팬덤 선택 페이지
     end
 end
