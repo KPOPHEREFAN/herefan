@@ -1,13 +1,67 @@
 <div id="absolute_header">
-    <div id="logo">
+    <%= link_to "/" do %>
+        <div id="logo">
 <%= render "/layouts/svgs/logo"%>
-    </div>
+        </div>
+    <% end %>
 </div>
+
 <header id="header" class="clearfix" data-current-skin="navbar_color">
     <ul class="header-inner">
         <li class="pull-right">
             <ul class="top-menu">
                 <li class="dropdown hidden-xs">
+                <%if user_signed_in?%>
+                    <a data-toggle="dropdown" href="" aria-expanded="true">
+                        <div class="profile_photo"></div>
+                    </a>
+                     <div class="dropdown-menu pull-right dropdown-menu-lg">
+                        <span class="dropdown_pointer"></span>
+                        <div class="listview profile">
+                            <div class="main_profile">
+                                <div class="left_and_right">
+                                    <div>
+                                        <p class="f5"><%= current_user.mail%></p>
+                                        <p class="f5">103pt</p>                                        
+                                    </div>
+                                    <div>
+                                        <a data-method="get" href="/users/edit">Edit</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fanid_profile selected">
+                                <div></div>
+                                <div>
+                                    <p class="f5">@FanId | Fandom name</p>
+                                    <p class="f4">Lv.29 | exp 250/500</p>
+                                    <p class="f4">warm sunny day!</p>
+                                </div>
+                            </div>
+                            <div class="signout_button">
+                                <a data-method="delete" href="/users/sign_out">Sign out</a>
+                            </div>
+                            <div class="fanid_profile">
+                                <div></div>
+                                <div>
+                                    <p class="f5">@FanId | Fandom name</p>
+                                    <p class="f4">Lv.29 | exp 250/500</p>
+                                    <p class="f4">hot summer hot hot summer</p>
+                                </div>
+                            </div>                          
+                            <div class="fanid_profile">
+                                <div></div>
+                                <div>
+                                    <p class="f5">@FanId | Fandom name</p>
+                                    <p class="f4">Lv.29 | exp 250/500</p>
+                                    <p class="f4">shot summer Oh</p>
+                                </div>
+                            </div> 
+                            <div class="add_fanid_button">
+                                <p class="f3">add fanID</p>          
+                            </div>
+                        </div>
+                    </div>
+                <%else%>
                     <a data-toggle="dropdown" href="" aria-expanded="true">
                         <span style="font-size:20px">Join</span>
                     </a>
@@ -16,14 +70,11 @@
                         <div class="listview join">
                             <h1>Welcom to Here Fans!</h1>
                             <div class="login_form">
-                            <%unless user_signed_in?%>
 <%= render "/users/sessions/new" %>
-                            <%else%>
-                                <a data-method="delete" href="/users/sign_out">LOGOUT</a>
-                            <%end%>
                             </div>   
                         </div>
                     </div>
+                <%end%>
                 </li>
             </ul>
         </li>

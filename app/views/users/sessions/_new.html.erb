@@ -43,13 +43,13 @@
     <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "dropdown_box_input"  %>
   </div>
   <div class="left_and_right">
-    <span>
+    <div>
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>   
-    </span>
-    <span>
+    </div>
+    <div>
        <p style="margin-bottom:5px"><%= link_to "Forgot Password?", new_password_path(resource_name) %></p>  
-    </span>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit "Sign in", class: "dropdown_box_input"%>
