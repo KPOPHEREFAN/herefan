@@ -3,8 +3,8 @@
 
 Rails.application.routes.draw do
     
-  resources :fandoms
-  resources :fan_ids
+    resources :fandoms
+    resources :fan_ids
     # Devise routers
     devise_for :users, controllers: {
         sessions: 'users/sessions',
@@ -18,4 +18,5 @@ Rails.application.routes.draw do
     
     root 'home#index'
     get '/util/merge', to: "home#merge", as: 'merge'
+    get '/select_your_star', to: "home#select", as: 'fandom_select'
 end

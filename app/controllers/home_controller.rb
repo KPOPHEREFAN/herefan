@@ -35,8 +35,8 @@ class HomeController < ApplicationController
         redirect_to :back
     end
     
-    def add_fan_id
-        
+    def select
         # 팬덤 선택 페이지
+        
     end
 end
