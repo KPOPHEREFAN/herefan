@@ -33,16 +33,19 @@ p.f5{font-family: 'Nunito', sans-serif; font-weight: 400; font-size: 16px; }
 
 
 #fandom_select{
-	padding: 50px 0px 50px 100px;
-	height:1000px;
+	padding: 50px 25px 100px 25px;
+	height:750px;
 	width:950px;
 	transform: translateX(-50%);
 	position:relative;
 	margin-left:50%;
 	background-color: white;
 	#fandom_now{
-		padding: 0px 160px 30px 160px;
-		#fandom_profile{
+		padding: 0px 135px 30px 135px;
+		.left_and_right{
+			.left_div, .right_div{position:relative; height: 70px; width: 40%;}
+		}
+		#selected_fandom_logo{
 			display: inline-block;
 			width: 70px;
 			height: 70px;
@@ -50,8 +53,35 @@ p.f5{font-family: 'Nunito', sans-serif; font-weight: 400; font-size: 16px; }
 			margin-right: 20px;
 			background-color: gray;
 		}
-		p{
+		#nickname{
+			position: absolute;
 			display: inline-block;
+			bottom: 0px;
+			margin-bottom: 0px;
+		}
+		#nickname_input{
+			height: 35px;
+			width: 100px;
+			position: absolute;
+			display: inline-block;
+			bottom: 0px;
+			margin-bottom: 0px;
+			@extend p.d2;
+		}
+		span{
+			position: absolute;
+			display: inline-block;
+			bottom: 0px;
+			right: 0px;
+			color: #72C6C3;
+			cursor: pointer;
+			@extend p.d2;
+		}
+		#fanid_edit_button{
+			position: inline-block;
+			height: 40px;
+			width: 40px;
+			background-color: gray;
 		}
 		input[type="submit"]{
 			border: none;
@@ -59,7 +89,24 @@ p.f5{font-family: 'Nunito', sans-serif; font-weight: 400; font-size: 16px; }
 			height: 45px;
 			background-color: #72C6C3;
 			color: #e6e6e6;
+			position: absolute;
+			bottom: 0px;
+			transform: translateX(-100%);
 			@extend p.f2;
+		}
+	}
+	#fandom_list{
+		.fandom_field{
+			display: inline-block;
+			width: 130px;
+			margin: 30px 23px 50px 23px;
+			text-align: center;
+			.fandom_logo{
+				width:130px;
+				height:130px;
+				border-radius: 65px;
+				background-color: #CB4E5C;
+			}
 		}
 	}
 }

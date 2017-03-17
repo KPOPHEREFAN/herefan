@@ -53,8 +53,10 @@ class ApplicationController < ActionController::Base
     # fanId를 새로 생성한 경우(혹은 기타의 경우에), fandom 이 입력되지 않은 fanId 라면,
     # fandom 을 설정하는 페이지로 강제 이돌시키는 함수입니다.
     def redirect_select_fandom
-        unless my_current_fan_id_has_fandom?
-            redirect_to fandom_select_path
+        if user_signed_in?
+            unless my_current_fan_id_has_fandom?
+                redirect_to fandom_select_path
+            end
         end
     end
     
