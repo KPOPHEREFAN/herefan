@@ -40,10 +40,18 @@ class FanIdsController < ApplicationController
   # PATCH/PUT /fan_ids/1
   # PATCH/PUT /fan_ids/1.json
   def update
+    success = @fan_id.update(fan_id_params)
+    
+    @fandom = Fandom.find(params[:fandom_id])
+    @fandom.fan_ids << @fan_id
+    fandom_name     = @fandom.name
+    says_to_newbie  = @fandom.description
+    
     respond_to do |format|
-      if @fan_id.update(fan_id_params)
-        format.html { redirect_to @fan_id, notice: 'Fan was successfully updated.' }
-        format.json { render :show, status: :ok, location: @fan_id }
+      if success
+        # format.html { redirect_to @fan_id, notice: 'Fan was successfully updated.' }
+        # format.json { render :show, status: :ok, location: @fan_id }
+        format.html { redirect_to root_path, notice: "Welcome to #{fandom_name}, #{says_to_newbie}" }
       else
         format.html { render :edit }
         format.json { render json: @fan_id.errors, status: :unprocessable_entity }
