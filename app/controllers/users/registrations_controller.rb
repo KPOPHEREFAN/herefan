@@ -19,17 +19,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     def create
         puts params[:user]
         
-        puts
-        puts
-        email   = params[:user]['email']
-        mail    = params[:user]['mail']
-        puts email
-        puts mail
-        puts
-        puts
+        #FanId.create()
         
-        puts params[:user]
-        # redirect_to :back
         super
     end
     

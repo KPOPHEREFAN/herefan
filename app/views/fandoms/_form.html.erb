@@ -1,0 +1,62 @@
+<%= form_for(fandom) do |f| %>
+  <% if fandom.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fandom.errors.count, "error") %> prohibited this fandom from being saved:</h2>
+
+      <ul>
+      <% fandom.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :subtitle %>
+    <%= f.text_field :subtitle %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :profile_img %>
+    <%= f.text_field :profile_img %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bg_img %>
+    <%= f.text_field :bg_img %>
+  </div>
+
+  <div class="field">
+    <%= f.label :admin_id %>
+    <%= f.number_field :admin_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :artist_id %>
+    <%= f.text_field :artist_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :group_id %>
+    <%= f.text_field :group_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
