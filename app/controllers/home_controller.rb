@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
-before_action :test, only: :index
-
+    before_action :ugly_session_destroy, only: :index
+    
     def index
         
         #
@@ -28,16 +28,14 @@ before_action :test, only: :index
         dummy['img_uri'] = 'http://pa1.narvii.com/5736/9936ce0ff30a1d4bca813d3a96effff28ffa380a_hq.gif'
         dummy['description'] = ''
         @carousel << dummy
-        
     end
     
     def merge
         current_user.merge
         redirect_to :back
     end
-
-    def test
-        session["devise.twitter_data"] = nil if session["devise.twitter_data"]
-        # raise :test
+    
+    def select
+        # 팬덤 선택 페이지
     end
 end
