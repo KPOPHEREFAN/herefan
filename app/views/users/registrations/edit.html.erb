@@ -1,43 +1,50 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div id="mypage">
+  <h1>My Page</h1>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+    <div class="field">
+      <h2>Account</h2>
+      <p><%= resource.mail%></p>
+      <p>point: 103</p>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <div class="field">
+      <h2>Fan ID Info</h2>
+      <div id="fan_id_info">
+        <div></div>
+        <div>
+          <h3>FanID</h3>
+          <h3>Fandom name</h3>
+          <h3 class="status_bar"><span>Lv.29 | exp </span> <span> </span> <span>250/500</span></h3>
+          <h3>warm sunny day!</h3>
+        </div>
+      </div>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div class="field">
+      <h2>Change password</h2>
+      <h3>Old Password</h3>
+      <%= f.password_field :current_password, autocomplete: "off" %>      
+      <h3>New password</h3>
+      <%= f.password_field :password, autocomplete: "off" %>
+      <h3>Confirm new password</h3>
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+    <div class="field">
+      <%= f.submit "Update" %>
+    </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <h2>Delete account</h2>
+    <h3>Are you sure you want to delete your account? Once you delete your account, all of your fanID and data will be deleted forever.</h3>
+    <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+
