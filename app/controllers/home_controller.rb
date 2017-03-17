@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
-    before_action :ugly_session_destroy, only: :index
+    before_action :ugly_session_destroy, only: [:index]
+    before_action :login_confirm, except: [:index]
+    before_action :redirect_select_fandom, except: [:select, :merge]
     
     def index
         
@@ -36,6 +38,7 @@ class HomeController < ApplicationController
     end
     
     def select
+        fan_id = current_user.fan_ids
         # 팬덤 선택 페이지
     end
 end
