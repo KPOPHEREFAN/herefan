@@ -37,6 +37,5 @@ class HomeController < ApplicationController
     
     def select
         # 팬덤 선택 페이지
-        
     end
 end
