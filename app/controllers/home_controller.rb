@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+before_action :test, only: :index
+
     def index
         
         #
@@ -32,5 +34,10 @@ class HomeController < ApplicationController
     def merge
         current_user.merge
         redirect_to :back
+    end
+
+    def test
+        session["devise.twitter_data"] = nil if session["devise.twitter_data"]
+        # raise :test
     end
 end
