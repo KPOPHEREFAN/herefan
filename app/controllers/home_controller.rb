@@ -36,9 +36,9 @@ class HomeController < ApplicationController
         current_user.merge
         redirect_to :back
     end
-    
+
+    # 팬덤 선택 페이지
     def select
-        fan_id = current_user.fan_ids
-        # 팬덤 선택 페이지
+        @fan_id = current_fan_id
     end
 end

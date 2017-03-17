@@ -4,15 +4,14 @@ class ApplicationController < ActionController::Base
     def except_attributes
         %w(id created_at updated_at)
     end
-    
+
+    def current_fan_id
+        current_user.fan_ids.now
+    end
     
     
     # ==========================
     protected
-    
-    def currnet_fan_id
-        current_user.fan_ids.now
-    end
     
     # 디바이스의 소셜로그인 기능에 접근함으로써 생성된 세션을
     # 초기화 하기 위한 함수들 입니다.
