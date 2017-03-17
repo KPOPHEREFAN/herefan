@@ -1,7 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+artists = %w(BTS TWICE EXO BIGBANG INFINITE 2PM GirlsGeneration TBSK Psy 2NE1 2AM BlockB GOT7)
+p_img = '/default-user-image.png'
+artists.each do |name|
+    Fandom.create(name: "#{name}'s army", title: "Title for #{name}", subtitle: "We Are the #{name}'s Lover", description: "Hellow Newbie lover", profile_img: p_img)
+end
