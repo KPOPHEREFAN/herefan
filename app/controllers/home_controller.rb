@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
-    before_action :ugly_session_destroy, only: :index
+    before_action :ugly_session_destroy, only: [:index]
+    before_action :login_confirm, except: [:index]
     
     def index
         
