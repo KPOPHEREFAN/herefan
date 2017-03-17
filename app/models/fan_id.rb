@@ -11,8 +11,9 @@ class FanId < ApplicationRecord
     # current_user 의 fan_id 들 중, 활성 상태를 변경하고, 완료되면 true를 반환합니다.
     # 현재 활성 상태로 만들고자 하는 fan_id 단일 객체로 부터 호출해야만 한다는 점에 주의해주세요.
     def switch
-        this_fanid = self
-        me = this_fanid.user
+        this_fanid  = self
+        me          = this_fanid.user
+        
         me.fan_ids.update_all(active: false)
         if this_fanid.update(active: true)
             return true

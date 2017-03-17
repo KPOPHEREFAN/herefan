@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     # ==========================
     protected
     
-    def currnet_fanid
+    def currnet_fan_id
         current_user.fan_ids.now
     end
     
@@ -48,5 +48,18 @@ class ApplicationController < ActionController::Base
     def login_confirm
         msg = 'Oops, you have to sign in first~ :)'
         redirect_to :back, flash: { message: msg } unless current_user
+    end
+    
+    # Fandom 을 설정하지 않은 상태로 fanId 가 돌아다녀서는 안되기 때문에,
+    # fanId를 새로 생성한 경우(혹은 기타의 경우에), fandom 이 입력되지 않은 fanId 라면,
+    # fandom 을 설정하는 페이지로 강제 이돌시키는 함수입니다.
+    def redirect_select_fandom
+        unless my_current_fan_id_has_fandom?
+            redirect_to fandom_select_path
+        end
+    end
+    
+    def my_current_fan_id_has_fandom?
+        current_fan_id.fandom
     end
 end
