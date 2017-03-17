@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+    before_action :ugly_session_destroy, only: :index
+    
     def index
         
         #
@@ -26,11 +28,15 @@ class HomeController < ApplicationController
         dummy['img_uri'] = 'http://pa1.narvii.com/5736/9936ce0ff30a1d4bca813d3a96effff28ffa380a_hq.gif'
         dummy['description'] = ''
         @carousel << dummy
-        
     end
     
     def merge
         current_user.merge
         redirect_to :back
+    end
+    
+    def add_fan_id
+        
+        # 팬덤 선택 페이지
     end
 end
