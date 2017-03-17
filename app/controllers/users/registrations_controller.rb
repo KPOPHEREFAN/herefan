@@ -19,10 +19,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     def create
         puts params[:user]
         
-        # Here. continue.
+        #FanId.create()
         
-        puts params[:user]
-        # redirect_to :back
         super
     end
     

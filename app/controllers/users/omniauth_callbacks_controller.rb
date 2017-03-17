@@ -10,6 +10,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         user = nil
         user = current_user if current_user
         @user = User.find_for_oauth(request.env["omniauth.auth"], 'twitter', user)
+
+        puts @user
+        puts "\n==> end twitter \n\n\n\n\n\n\n\n"
         
         if @user.has_mail?
             session["devise.twitter_data"] = request.env["omniauth.auth"].info
@@ -23,8 +26,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
                 redirect_to new_user_registration_path, flash: { user: @user, need_field: need_field }
             end
         end
-        
-        
     end
     
     def facebook
@@ -35,7 +36,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         @user = User.find_for_oauth(request.env["omniauth.auth"], 'facebook', user)
 
         puts @user
-        puts "\n==> end \n\n\n\n\n\n\n\n"
+        puts "\n==> end facebook \n\n\n\n\n\n\n\n"
         
         if @user.persisted?
             sign_in_and_redirect @user, :event => :authentication       #this will throw if @user is not activated
@@ -47,17 +48,18 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
 
     def google_oauth2
-        # You need to implement the method below in your model (e.g. app/models/user.rb)
         puts request.env["omniauth.auth"]
     
         user = nil
         user = current_user if current_user
         @user = User.find_for_oauth(request.env["omniauth.auth"], 'google', user)
+
+        puts @user
+        puts "\n==> end google \n\n\n\n\n\n\n\n"
     
         if @user.persisted?
             sign_in_and_redirect @user, :event => :authentication
             set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
-            # flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
         else
             session["devise.google_data"] = request.env["omniauth.auth"].info #.except(:extra) #Removing extra as it can overflow some session stores
             redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")

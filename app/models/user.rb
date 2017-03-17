@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable and :omniauthable
+    
     devise  :authentication_keys => [:uniq_key]
     devise  :database_authenticatable, :registerable,
             :recoverable, :rememberable, :trackable, :validatable,
@@ -8,10 +9,31 @@ class User < ApplicationRecord
     
     has_many :fan_ids
     
+    before_create :default_fanId
+    
+    
+    public
+    
+    
+    #
+    ## Callback Functions
+    def default_fanId
+        if it_has_nothing_for_fan_id? then auto_create_fan_id end
+    end
+    
+    #
+    ## simple Helpers
     def has_mail?
         self.mail.length.zero? ? true : false
     end
     
+    def it_has_nothing_for_fan_id?
+        self.fan_ids.size.zero?
+    end
+        
+    
+    #
+    ## Methods
     def socials
         socials = {}
         
@@ -21,36 +43,6 @@ class User < ApplicationRecord
         return socials
     end
     
-    # private
-    def oauth(arg)
-        case arg
-            
-        when 'facebook'
-            # return {:provider => self.provider, :uid => self.uid} if self.provider && self.uid
-            return {provider: self.provider_fb, uid: self.uid_fb, img: self.image_fb, url: self.url_fb} if self.provider_fb && self.uid_fb
-            return false
-            
-        when 'twitter'
-            # return {:provider => self.provider, :uid => self.uid} if self.provider && self.uid
-            return {provider: self.provider_tw, uid: self.uid_tw, img: self.image_tw, url: self.url_tw} if self.provider_tw && self.uid_tw
-            return false
-            
-        when 'google'
-            # return {:provider => self.provider, :uid => self.uid} if self.provider && self.uid
-            return {provider: self.provider_gg, uid: self.uid_gg, img: self.image_gg, url: self.url_gg} if self.provider_gg && self.uid_gg
-            return false
-            
-        else
-            return nil
-        end
-    end
-    
-    # private
-    def oauth_providers
-        %w(facebook twitter google)
-    end
-
-    # public
     def self.find_for_oauth(auth, provider, current_user)
         
         # 처음 방문하여 회원가입한 적이 없고, 특정 소셜계정(페북)으로 로그인을 하려는 경우 ~> OK
@@ -69,57 +61,44 @@ class User < ApplicationRecord
         case provider
         when 'facebook'
             @user_ = User.where(provider_fb: auth.provider, uid_fb: auth.uid).first
-            puts
-            puts @user_.to_json
-            puts
-            user.fill_facebook_info(auth, user).save   unless @user_
+            user.fill_social_info(auth, 'facebook').save   unless @user_
             
         when 'twitter'
             @user_ = User.where(provider_tw: auth.provider, uid_tw: auth.uid).first
-            user.fill_twitter_info(auth, user)    unless @user_
+            user.fill_social_info(auth, 'twitter')         unless @user_
             
         when 'google'
             @user_ = User.where(provider_gg: auth.provider, uid_gg: auth.uid).first
-            user.fill_google_info(auth, user).save     unless @user_
+            user.fill_social_info(auth, 'google').save     unless @user_
             
         end
         
-        
         return user unless @user_   # 최종 반환값은 user 객체이어야 한다.
         return @user_
-    end
-
-    # public?
-    def self.new_with_session(params, session)
-        super.tap do |user|
-            if data = session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']
-                user.email = data['email'] if user.email.blank?
-            end
-        end
     end
     
     def merge
         #
         # set local variable
         me = self
-        
+    
         my_mail     = me.mail
         my_id       = me.id
         my_socials  = me.socials
-        
+    
         same_mail_users = User.where(mail: my_mail).where.not(id: my_id)
-
+    
         #
         # calculate fields that i want to get with merging
         whole_socials = {}
         whole_socials[:facebook]         = %w(provider_fb uid_fb image_fb url_fb)
         whole_socials[:twitter]          = %w(provider_tw uid_tw image_tw url_tw)
         whole_socials[:google_oauth2]    = %w(provider_gg uid_gg image_gg url_gg)
-        
+    
         merge_socials = {}
         merge_socials_keys = whole_socials.keys - my_socials.keys
         merge_socials_keys.each { |key_name| merge_socials[key_name] = whole_socials[key_name] }
-        
+    
         #
         # merge execution
         same_mail_users.each do |another_me|                            # 1. '또 다른 나'들을 각각 돌면서
@@ -134,8 +113,67 @@ class User < ApplicationRecord
         me.save                                                         # 6. 저장한다
     end
 
+    def fill_social_info(auth, provider)
+        return fill_facebook_info(auth, self)  if provider == 'facebook'
+        return fill_twitter_info(auth, self)   if provider == 'twitter'
+        return fill_google_info(auth, self)    if provider == 'google'
+    end
+    
+    # public?
+    def self.new_with_session(params, session)
+        super.tap do |user|
+            if data = session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']
+                user.email = data['email'] if user.email.blank?
+            end
+        end
+    end
+
+
+    private
+    
+    
+    #
+    ## Callback Functions
+    def auto_create_fan_id
+        self.fan_ids << FanId.create(nickname: self.mail.split('@').first)
+    end
+
+    #
+    ## simple Helpers
+    def randomic(big_count: 20, count: 5)
+        (('a'..'z').to_a + ('A'..'Z').to_a + (1..20).to_a.map{|i| i.to_s}).sample(big_count).sample(count).join
+    end
+
+    def randomic_email_format
+        "#{randomic(count: 8)}@#{randomic}.#{randomic(count: 3)}"
+    end
+
+    #
+    ## Methods
+    def oauth(arg)              # (called by 'socials' method)
+        case arg
+    
+        when 'facebook'
+            # return {:provider => self.provider, :uid => self.uid} if self.provider && self.uid
+            return {provider: self.provider_fb, uid: self.uid_fb, img: self.image_fb, url: self.url_fb} if self.provider_fb && self.uid_fb
+            return false
+    
+        when 'twitter'
+            # return {:provider => self.provider, :uid => self.uid} if self.provider && self.uid
+            return {provider: self.provider_tw, uid: self.uid_tw, img: self.image_tw, url: self.url_tw} if self.provider_tw && self.uid_tw
+            return false
+    
+        when 'google'
+            # return {:provider => self.provider, :uid => self.uid} if self.provider && self.uid
+            return {provider: self.provider_gg, uid: self.uid_gg, img: self.image_gg, url: self.url_gg} if self.provider_gg && self.uid_gg
+            return false
+    
+        else
+            return nil
+        end
+    end
+    
     def fill_facebook_info(auth, user)
-        
         user.provider_fb    = auth.provider
         user.uid_fb         = auth.uid
         
@@ -150,9 +188,8 @@ class User < ApplicationRecord
         
         return user
     end
-
-    def fill_twitter_info(auth, user)
     
+    def fill_twitter_info(auth, user)
         user.provider_tw    = auth.provider
         user.uid_tw         = auth.uid
 
@@ -171,7 +208,6 @@ class User < ApplicationRecord
     end
     
     def fill_google_info(auth, user)
-    
         user.provider_gg    = auth.provider
         user.uid_gg         = auth.uid
 
@@ -187,11 +223,12 @@ class User < ApplicationRecord
         return user
     end
     
-    def randomic(big_count: 20, count: 5)
-        (('a'..'z').to_a + ('A'..'Z').to_a + (1..20).to_a.map{|i| i.to_s}).sample(big_count).sample(count).join
+    
+    protected
+    
+    
+    def oauth_providers         # (called by 'socials' method)
+        %w(facebook twitter google)
     end
     
-    def randomic_email_format
-        "#{randomic(count: 8)}@#{randomic}.#{randomic(count: 3)}"
-    end
 end
