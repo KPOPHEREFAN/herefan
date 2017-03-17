@@ -42,7 +42,7 @@ class FanIdsController < ApplicationController
   def update
     success = @fan_id.update(fan_id_params)
     
-    @fandom = Fandom.find(params[:fandom_id])
+    @fandom = Fandom.find(params[:fan_id][:fandom_id])
     @fandom.fan_ids << @fan_id
     fandom_name     = @fandom.name
     says_to_newbie  = @fandom.description

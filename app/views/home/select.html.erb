@@ -1,26 +1,29 @@
 <div id="fandom_select">
-	<div id="fandom_now">
-		<p class="d1" style="color:black;">Create your FanID!</p>
-		<div class="left_and_right">
-			<div class="left_div">
-				<div id="selected_fandom_logo"></div>
-				<p id="nickname" class="d2">@<%= @fan_id.nickname %></p>
-				<input class="hidden" type="text" id="nickname_input" name="nickname" value="<%= @fan_id.nickname %>">
-				<span id="JNicknameEdit">Edit</span>
-			</div>
-			<div class="right_div">
-				<input type="submit" value="Continue">
+	<%= form_for @fan_id do |f|%>
+		<%= f.hidden_field :fandom_id, value: "1"%>
+		<div id="fandom_now">
+			<p class="d1" style="color:black;">Create your FanID!</p>
+			<div class="left_and_right">
+				<div class="left_div">
+					<div id="selected_fandom_logo"></div>
+					<p id="nickname" class="d2">@<%= @fan_id.nickname %></p>
+					<%= f.text_field :nickname, class: "hidden"%>
+					<span id="JNicknameEdit">Edit</span>
+				</div>
+				<div class="right_div">
+					<%= f.submit "Continue"%>
+				</div>
 			</div>
 		</div>
-	</div>
+	<%end%>
 	<div id="fandom_list">
 
-		<%1.upto(10).each do%>
-			<div class="fandom_field">
-				<div class="fandom_logo"></div>
-				<p class="f2" style="color:black">fandom name</p>				
-			</div>
-		<%end%>
+	<%Fandom.all.each do |x|%>
+		<div class="fandom_field">
+			<div class="fandom_logo"></div>
+			<p class="f2" style="color:black"><%= x.name%></p>				
+		</div>
+	<%end%>
 
 	</div>
 </div>
@@ -28,7 +31,7 @@
 <script>
 	$("#JNicknameEdit").click(function(){
 		$("#nickname").toggleClass("hidden");
-		$("#nickname_input").toggleClass("hidden");
-		$("#nickname").html("@"+$("#nickname_input").val())
+		$("#fan_id_nickname").toggleClass("hidden");
+		$("#nickname").html("@"+$("#fan_id_nickname").val())
 	})
 </script>	
