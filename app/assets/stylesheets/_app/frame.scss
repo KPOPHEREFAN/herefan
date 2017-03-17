@@ -1,8 +1,116 @@
-.d2{font-family: ‘Nunito’, san-serif; font-weight: 600; font-size: 22px; }
-.f2{font-family: ‘Nunito’, san-serif; font-weight: 600; font-size: 18px; }
-.f3{font-family: ‘Nunito’, san-serif; font-weight: 600; font-size: 16px; }
-.f4{font-family: ‘Nunito’, san-serif; font-weight: 400; font-size: 15px; }
-.f5{font-family: ‘Nunito’, san-serif; font-weight: 400; font-size: 16px; }
+p.d1{font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 35px; }
+p.d2{font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 22px; }
+p.f2{font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 18px; }
+p.f3{font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 16px; }
+p.f4{font-family: 'Nunito', sans-serif; font-weight: 400; font-size: 15px; }
+p.f5{font-family: 'Nunito', sans-serif; font-weight: 400; font-size: 16px; }
+
+.hr_with_text{
+	hr{
+		border-color: #b3b3b3;
+		display:inline-block;
+		width:40%;		
+	}
+	span{
+		display:inline-block;
+		width:16%;
+		transform: translateY(-14px);
+		font-size:15px;
+	}
+}
+
+.left_and_right{
+	div:nth-child(1){float: left; text-align: left;}
+	div:nth-child(2){float: right; text-align: right;}
+	&:after{
+		content:"";
+		display:block;
+		clear: both;
+	}
+}
+
+
+
+
+#fandom_select{
+	padding: 50px 25px 100px 25px;
+	height:750px;
+	width:950px;
+	transform: translateX(-50%);
+	position:relative;
+	margin-left:50%;
+	background-color: white;
+	#fandom_now{
+		padding: 0px 135px 30px 135px;
+		.left_and_right{
+			.left_div, .right_div{position:relative; height: 70px; width: 40%;}
+		}
+		#selected_fandom_logo{
+			display: inline-block;
+			width: 70px;
+			height: 70px;
+			border-radius: 35px;
+			margin-right: 20px;
+			background-color: gray;
+		}
+		#nickname{
+			position: absolute;
+			display: inline-block;
+			bottom: 0px;
+			margin-bottom: 0px;
+		}
+		#fan_id_nickname{
+			height: 35px;
+			width: 100px;
+			position: absolute;
+			display: inline-block;
+			bottom: 0px;
+			margin-bottom: 0px;
+			@extend p.d2;
+		}
+		span{
+			position: absolute;
+			display: inline-block;
+			bottom: 0px;
+			right: 0px;
+			color: #72C6C3;
+			cursor: pointer;
+			@extend p.d2;
+		}
+		#fanid_edit_button{
+			position: inline-block;
+			height: 40px;
+			width: 40px;
+			background-color: gray;
+		}
+		input[type="submit"]{
+			border: none;
+			width: 150px;
+			height: 45px;
+			background-color: #72C6C3;
+			color: #e6e6e6;
+			position: absolute;
+			bottom: 0px;
+			transform: translateX(-100%);
+			@extend p.f2;
+		}
+	}
+	#fandom_list{
+		.fandom_field{
+			display: inline-block;
+			width: 130px;
+			margin: 30px 23px 50px 23px;
+			text-align: center;
+			.fandom_logo{
+				width:130px;
+				height:130px;
+				border-radius: 65px;
+				background-color: #CB4E5C;
+			}
+		}
+	}
+}
+
 
 
 
@@ -27,7 +135,7 @@
 			height:45px;
 			background-color: #72C6C3;
 			border: none;
-			@extend .f2
+			@extend p.f2;
 		}
 	}
 }
@@ -115,162 +223,134 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-#absolute_header{
-	position: absolute;
-	height: 150px;
-	width: 100%;
-	background-color: #f5146c;
-	z-index:1;
-	#logo{
-		margin-top: 15px;
-		display: inline-block;
-		margin-left: 50%;
-		transform: translateX(-50%);
-	}
-}
-
-#header{
-	padding: 0px 50px 0px 50px;
-	&[data-current-skin = "navbar_color"]{
-		background-color: #171b48;
-	}
-	.profile_photo{
-		width:30px;
-		height:30px;
-		background-color:white;
-		border-radius: 15px;
-	}
-	.dropdown-menu{
-		width:400px;
-		margin-top: 25px;
-		border: none;
-		.dropdown_pointer{
-			position:absolute;
-			border-left: 10px solid transparent;
-			border-right: 10px solid transparent;
-			border-bottom: 20px solid white;
-			top: -20px;
-			right: 15px;
-			display:block;
+#main_nav{
+	#absolute_header{
+		position: absolute;
+		height: 150px;
+		width: 100%;
+		background-color: #f5146c;
+		z-index:1;
+		#logo{
+			margin-top: 15px;
+			display: inline-block;
+			margin-left: 50%;
+			transform: translateX(-50%);
 		}
-		.listview{
-			&.join{
-				padding: 0px 20px 65px 20px;
-				text-align: center;
-				h1{
-					font-size:20px;
-					margin: 30px 0px 30px 0px;
-				}
-				.social_login_button{
-					padding: 10px 60px 10px 70px; 
-					border: 2px solid #EEEEEE;
-					margin-bottom:10px;
-					border-radius: 3px;
-				}
-				.dropdown_box{
-					display: block;
-					height: 40px;
-					margin-bottom: 10px;
-					background-color: gray;
-				}
-				.dropdown_box_input{
-					display: block;
-					height: 40px;
-					margin-bottom: 10px;
-					width:360px;
-				}
+	}
+
+	#header{
+		padding: 0px 50px 0px 50px;
+		&[data-current-skin = "navbar_color"]{
+			background-color: #171b48;
+		}
+		.profile_photo{
+			width:30px;
+			height:30px;
+			background-color:white;
+			border-radius: 15px;
+		}
+		.dropdown-menu{
+			width:400px;
+			margin-top: 25px;
+			border: none;
+			.dropdown_pointer{
+				position:absolute;
+				border-left: 10px solid transparent;
+				border-right: 10px solid transparent;
+				border-bottom: 20px solid white;
+				top: -20px;
+				right: 15px;
+				display:block;
 			}
-			&.profile{
-				padding: 30px 30px 0px 30px;
-				.f4{margin-bottom:5px; }
-				.f5{margin-bottom:3px; }
-				.main_profile{}
-				.signout_button{
-					margin-top:-35px;
-					margin-bottom:35px;
-					a{	
-						float: right;
-					}
-				}
-				.fanid_profile{
-					margin: 0px -30px 0px -30px;
-					padding: 7px 0px 8px 0px;
-					border-left: 20px solid #5C5C5C;
-					border-bottom: 1px solid #E7E7E7;
-					&.selected{
-						border-left: 20px solid rgba(0,0,0,0);
-						border-bottom: 1px solid rgba(0,0,0,0);
-					}
-					div:nth-child(1){
-						float: left;
-						width: 70px;
-						height: 70px;
-						border-radius: 35px;
-						border:1px solid #B9B8B2;
-						margin-right: 15px;
-						margin-left: 10px;
-					}
-					div:nth-child(2){
-						float: left;
-						.f5{margin-bottom:0px; }
-					}
-					&:after{
-						content:"";
-						display: block;
-						clear:both;
-					}
-				}
-				.add_fanid_button{
+			.listview{
+				&.join{
+					padding: 0px 20px 65px 20px;
 					text-align: center;
-					.f3{
-						margin-top:10px;
+					h1{
+						font-size:20px;
+						margin: 30px 0px 30px 0px;
+					}
+					.social_login_button{
+						padding: 10px 60px 10px 70px; 
+						border: 2px solid #EEEEEE;
 						margin-bottom:10px;
-					}					
+						border-radius: 3px;
+					}
+					.dropdown_box{
+						display: block;
+						height: 40px;
+						margin-bottom: 10px;
+						background-color: gray;
+					}
+					.dropdown_box_input{
+						display: block;
+						height: 40px;
+						margin-bottom: 10px;
+						width:360px;
+					}
+					.signup_field{
+						padding-top:15px;
+						padding-bottom:15px;
+						float: left; 
+					}
 				}
-			}	
+				&.profile{
+					padding: 30px 30px 0px 30px;
+					.f4{margin-bottom:5px; }
+					.f5{margin-bottom:3px; }
+					.main_profile{}
+					.fanid_profile{
+						margin: 0px -30px 0px -30px;
+						padding: 7px 0px 8px 0px;
+						border-left: 20px solid #5C5C5C;
+						border-bottom: 1px solid #E7E7E7;
+						&.selected{
+							border-left: 20px solid rgba(0,0,0,0);
+							border-bottom: 1px solid rgba(0,0,0,0);
+						}
+						div:nth-child(1){
+							float: left;
+							width: 70px;
+							height: 70px;
+							border-radius: 35px;
+							border:1px solid #B9B8B2;
+							margin-right: 15px;
+							margin-left: 10px;
+						}
+						div:nth-child(2){
+							float: left;
+							.f5{margin-bottom:0px; }
+						}
+						.fanid_hover{
+							transition: 0.2s;
+							opacity: 0;
+							margin-left: -20px;
+							margin-top: -8px;
+							position: absolute;
+							&:hover{
+								opacity: 1;
+							}
+						}
+						&:after{
+							content:"";
+							display: block;
+							clear:both;
+						}
+					}
+					.add_fanid_button{
+						text-align: center;
+						.f3{
+							margin-top:10px;
+							margin-bottom:10px;
+						}					
+					}
+				}	
+			}
 		}
 	}
 }
 
-.hr_with_text{
-	hr{
-		border-color: #b3b3b3;
-		display:inline-block;
-		width:40%;		
-	}
-	span{
-		display:inline-block;
-		width:16%;
-		transform: translateY(-14px);
-		font-size:15px;
-	}
-}
 
-.left_and_right{
-	div:nth-child(1){float: left;}
-	div:nth-child(2){float: right;}
-	&:after{
-		content:"";
-		display:block;
-		clear: both;
-	}
-}
-
-.left_only{
-	padding-top:15px;
-	padding-bottom:15px;
-	float: left; 
-}
 
 
 
