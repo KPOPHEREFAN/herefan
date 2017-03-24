@@ -1,0 +1,48 @@
+<div id="here_intro" align="center">
+	<div id="intro1">
+		<div id="intro_signin_wrapper">
+			<p>sign in</p>
+		</div>
+		<div id="intro_logo_wrapper">
+			<div id="intro_logo">
+				<%= render partial: "/layouts/svgs/logo", locals: {w: 110, h: 110}%>
+			</div>
+		</div>
+		<div id="intro_text_wrapper">
+			<%= render "/layouts/svgs/intro_text1" %>
+		</div>
+		<div id="intro_search_box" class="JSearchText" align="center">
+			<input type="text" placeholder="search my fandom">
+			<a target_objs=".fandom_field">s<span></span></a>
+		</div>
+		<div id="intro_fandom_list">
+			<% @fandoms.each do |fandom|%>
+				<div class="Jfandom_select fandom_field" JSearchText="<%= fandom.name %>">
+					<div class="fandom_image"></div>
+					<p><%= fandom.name %></p>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<div id="intro2" align="center">
+		<div id="intro_fandom_wrapper">
+			<div class="bubble_up">
+				<%= render "/layouts/svgs/intro_BTS" %>
+			</div>
+		</div>
+		<div id="intro_text_wrapper">
+			<div class="bubble_up">
+				<%= render "/layouts/svgs/intro_text2" %>
+			</div>
+		</div>
+		<div id="intro_service_list">
+			<% @services.each do |service|%>
+				<a>
+					<div class="bubble_up">
+						<p><%= service %></p>
+					</div>
+				</a>
+			<% end %>
+		</div>
+	</div>
+</div>

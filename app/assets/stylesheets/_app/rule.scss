@@ -1,0 +1,60 @@
+// 1. 큰 덩이의 섹션은 #here_[이름]으로 명명한다.
+// 2. js와 연동하는 객체는 .JAsdfAsdf처럼 낙타형 이름의 클래스를 준다.
+// 3. css는 프로그래밍과 글쓰기 사이에 위치한다. 너무도 가변적이라 무리한 객체화는 지양한다.
+
+div{position: relative;}
+p{margin-bottom: 0px;}
+a{cursor: pointer;}
+// -------------------------------------
+// -------------------------------------
+// -------------------------------------
+.layer_1{
+	z-index: 1;
+	&.highest{z-index: 10;}
+}
+.layer_2{
+	z-index:11;
+	&.highest{z-index: 110;}
+}
+.layer_3{
+	z-index:111;
+	&.highest{z-index: 1110;}
+}
+// -------------------------------------
+$cutoffpx: 992px;
+// -------------------------------------
+$dummy: gray;
+$deep_blue: #07174b;
+$lite_blue: #00c9c6;
+$hot_pink: #f5146c;
+$honey_yellow: #ffde55;
+$white: white;
+$black: black;
+$lite_gray: #CCCCCC;
+// -------------------------------------
+.d1{font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 35px; line-height: 80px;}
+.d2{font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 22px; line-height: 60px;}
+.d2_nl{font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 22px; }
+.d3{font-family: 'Nunito', sans-serif; font-weight: 400; font-size: 18px; line-height: 27px;}
+.d4{font-family: 'Nunito', sans-serif; font-size: 15px;}
+.f1{font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 22px; line-height: 60px;}
+.f1_nl{font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 22px; }
+.f2{font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 18px; line-height: 45px;}
+.f2_nl{font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 18px; }
+.f3{font-family: 'Nunito', sans-serif; font-weight: 600; font-size: 16px; line-height: 40px;}
+.f4{font-family: 'Nunito', sans-serif; font-weight: 400; font-size: 15px; line-height: 40px;}
+.f5{font-family: 'Nunito', sans-serif; font-weight: 400; font-size: 16px; }
+// -------------------------------------
+%pf{position: fixed; }
+%pa{position: absolute; }
+%pr{position: relative; }
+%sc{border-radius: 50%; }
+%ch{margin-left: 50%; transform: translateX(-50%); }
+%ch2{left: 50%; transform: translateX(-50%); }
+%cp{margin-left: 50%; margin-top: 50%; transform: translate(-50%, -50%); }
+%fl{float: left; }
+%fr{float: right; }
+%di{display: inline; }
+%db{display: block; }
+%dib{display: inline-block; }
+@mixin HCSS($args...) {@each $arg in $args{@extend %#{$arg} } }

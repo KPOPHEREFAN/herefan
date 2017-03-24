@@ -8,8 +8,14 @@ class ApplicationController < ActionController::Base
     def current_fan_id
         current_user.fan_ids.now
     end
-    
-    
+
+    def my_other_fan_ids
+        current_user.fan_ids.to_a - [current_fan_id]
+    end
+
+    helper_method :current_fan_id
+    helper_method :my_other_fan_ids
+    helper_method :my_current_fan_id_has_fandom?
     # ==========================
     protected
     
@@ -55,7 +61,7 @@ class ApplicationController < ActionController::Base
     def redirect_select_fandom
         if user_signed_in?
             unless my_current_fan_id_has_fandom?
-                redirect_to fandom_select_path
+                redirect_to "/fan_ids/#{current_fan_id.id}/edit"
             end
         end
     end

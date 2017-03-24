@@ -5,8 +5,10 @@
 <%= csrf_meta_tags %>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <%= stylesheet_link_tag    'application', media: 'all' %>
+<%= stylesheet_link_tag    '_controller/'+params[:controller] %>
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 <%= javascript_include_tag 'application' %>
+<%= javascript_include_tag '_controller/'+params[:controller] %>
     </head>
     <body>
 <%= render partial: "/layouts/parts/navbar" %>
