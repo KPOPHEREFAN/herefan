@@ -25,6 +25,210 @@
 		.dropdown a span{
 			@extend .f1_nl;
 		}
+		#selected_fandom_logo{
+			display: inline-block;
+			width: 70px;
+			height: 70px;
+			border-radius: 35px;
+			margin-right: 20px;
+			background-color: gray;
+		}
+		#nickname{
+			position: absolute;
+			display: inline-block;
+			bottom: 0px;
+			margin-bottom: 0px;
+		}
+		#fan_id_nickname{
+			height: 35px;
+			width: 100px;
+			position: absolute;
+			display: inline-block;
+			bottom: 0px;
+			margin-bottom: 0px;
+			@extend p.d2;
+		}
+		span{
+			position: absolute;
+			display: inline-block;
+			bottom: 0px;
+			right: 0px;
+			color: #72C6C3;
+			cursor: pointer;
+			@extend p.d2;
+		}
+		#fanid_edit_button{
+			position: inline-block;
+			height: 40px;
+			width: 40px;
+			background-color: gray;
+		}
+		input[type="submit"]{
+			border: none;
+			width: 150px;
+			height: 45px;
+			background-color: #72C6C3;
+			color: #e6e6e6;
+			position: absolute;
+			bottom: 0px;
+			transform: translateX(-100%);
+			@extend p.f2;
+		}
+	}
+	#fandom_list{
+		.fandom_field{
+			display: inline-block;
+			width: 130px;
+			margin: 30px 23px 50px 23px;
+			text-align: center;
+			.fandom_logo{
+				width:130px;
+				height:130px;
+				border-radius: 65px;
+				background-color: #CB4E5C;
+			}
+		}
+	}
+}
+
+
+
+
+
+#sign_up{
+	text-align: center;
+	background-color: white;
+	padding-top:50px;
+	height:1000px;
+	.d2{
+		margin-bottom: 30px;
+	}
+	input{
+		&[type="password"], &[type="email"]{
+			width: 270px;
+			height: 40px;
+			margin-bottom: 10px;
+		}
+		&[type="submit"]{
+			margin-top:30px;
+			width:120px;
+			height:45px;
+			background-color: #72C6C3;
+			border: none;
+			@extend p.f2;
+		}
+	}
+}
+
+
+
+
+
+#mypage{
+    position:relative;
+    width:690px;
+    background-color: white;
+    margin-left:50%;
+    transform: translateX(-50%);
+    padding: 50px 70px 100px 50px;  
+    h1{text-align: center; }
+    h2{
+    	margin-top:30px;
+    	margin-bottom:20px;
+    }
+    h3{
+    	font-weight: 400;
+    	font-size:15px;
+    	margin-top:18px;
+    	&.status_bar{
+    		color:#CCCCCC;
+    		span:nth-child(1){
+	 	   		font-size:20px;
+    		}
+    		span:nth-child(2){
+    			display: inline-block;
+    			height: 10px;
+    			width: 150px;
+    			background-color: #CCCCCC;
+    			margin-left: 10px;
+    			margin-right: 10px;
+    			&:before{
+    				content:""; 
+    				display:block;
+    				height: 10px;
+    				width: 23%;
+    				background-color: #0A1E9F;
+    			}
+    		}
+    		span:nth-child(3){
+    			font-size:15px;
+    		}
+    	}
+    }
+    p{margin-bottom:5px; }
+    #fan_id_info{
+    	div:nth-child(1){
+    		width:150px;
+    		height:150px;
+    		border-radius:75px;
+    		border: 1px solid #DDDCDD;
+    		margin-right:30px;
+    		float: left;
+    	}
+    	div:nth-child(2){
+    		float: left;
+    	}
+    	&:after{
+    		content:""; 
+    		display:block;
+	    	clear:both;
+    	}
+    }
+    input[type = "password"]{
+    	width:400px;
+    	height:40px;
+    	border:1px solid #C3C3C3;
+    }
+    input[type = "submit"]{
+    	width:150px;
+    	height:40px;
+    	background-color: #72C6C3;
+    	margin-top:20px;
+    	border: none;
+    }
+}
+
+
+
+
+
+
+#main_nav{
+	#absolute_header{
+		position: absolute;
+		height: 150px;
+		width: 100%;
+		background-color: #f5146c;
+		z-index:1;
+		#logo{
+			margin-top: 15px;
+			display: inline-block;
+			margin-left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+
+	#header{
+		padding: 0px 50px 0px 50px;
+		&[data-current-skin = "navbar_color"]{
+			background-color: #171b48;
+		}
+		.profile_photo{
+			width:30px;
+			height:30px;
+			background-color:white;
+			border-radius: 15px;
+		}
 		.dropdown-menu{
 			width:400px;
 			margin-top: 25px;
