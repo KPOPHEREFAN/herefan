@@ -1,6 +1,5 @@
-<h1>Editing Fan</h1>
+<div id="here_fanids_form" align="center">
+	<p>Choose your Fandom!</p>
+<%= render 'form', fan_id: @fan_id, fandoms: @fandoms %>
+</div>
 
-<%= render 'form', fan_id: @fan_id %>
-
-<%= link_to 'Show', @fan_id %> |
-<%= link_to 'Back', fan_ids_path %>

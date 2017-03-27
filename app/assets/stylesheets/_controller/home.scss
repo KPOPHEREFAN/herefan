@@ -1,0 +1,168 @@
+@import '../_app/rule';
+
+#here_intro{
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	overflow: scroll;
+	@extend .layer_3;
+	@include HCSS(pf);
+	#intro1{
+		width: 100%;
+		height: 100%;
+		background-color: $deep_blue;
+		@include HCSS(pf);
+		#intro_signin_wrapper{
+			padding-top: 30px;
+			padding-right: 60px;
+			position: relative;
+			p{
+				text-align: right;
+				margin-bottom: 0px;
+				color: $honey_yellow;
+				@extend .f1;
+			}
+		}
+		#intro_logo_wrapper{
+			margin-top:-20px;
+			width:130px;
+			height:130px;
+			background-color: $white;
+			@include HCSS(sc);
+			#intro_logo{
+				top: 10px;
+				width: 110px;
+			}
+		}
+		#intro_text_wrapper{
+			width: 366px;
+			margin-top: -20px;
+		}
+		#intro_search_box{
+			margin-top: 40px;
+			margin-bottom: 70px;
+			width: 412px;
+			height: 57px;
+			input[type="text"]{
+				height: 100%;
+				width: 361px;
+				border-top-left-radius: 29px;
+				border-bottom-left-radius: 29px;
+				border: 6px solid $honey_yellow;
+				border-right: none;
+				background-color: $lite_blue;
+				color: $white;
+				text-align: right;
+				padding-right: 15px;
+				@extend .f2;
+			}
+			a{
+				height: 100%;
+				width: 51px;
+				margin-left: -4px;
+				border: 6px solid $honey_yellow;
+				border-left: none;
+				border-top-right-radius: 29px;
+				border-bottom-right-radius: 29px;
+				background-color: $hot_pink;
+				@extend .f2;
+				@include HCSS(dib, pr);
+				&:hover span{
+					background-color: $white;
+				}
+				span{
+					height: 36px;
+					width: 36px;
+					top:4px;
+					background-color: $lite_gray;
+					@include HCSS(pa, sc, dib, ch2)
+				}
+			}
+		}
+		#intro_fandom_list{
+			width: 800px;
+			.fandom_field{
+				width: 130px;
+				height: 159px;
+				margin-left: 10px;
+				margin-right: 10px;
+				margin-bottom: 35px;
+				display: inline-block;
+				position: relative;
+				&:hover{
+					.fandom_image{
+						transition: 0.2s;
+						width: 164px;
+						height: 164px;
+						border: 25px solid $hot_pink;
+						background-color: $white;
+					}
+				}
+				.fandom_image{
+					cursor: pointer;
+					width: 130px;
+					height: 130px;
+					border: 8px solid $hot_pink;
+					background-color: $white;
+					@include HCSS(pa, sc, cp);
+				}
+				p{
+					margin-bottom: 0px;
+					margin-top: 137px;
+					line-height: 22px;
+					color: $white;
+					@extend .f1_nl;
+					@include HCSS(pa, ch);
+				}
+			}
+		}
+	}
+	#intro2{
+		display: none;
+		width: 130px; height: 130px;
+		@include HCSS(pf);
+		.bubble_up{
+			transition: 0.5s;
+			transform: scale(0);
+		}
+		.fandom_image{
+			transition: 0.5s;
+			position: absolute;
+			width: 130px;
+			height: 130px;
+			border: 8px solid $hot_pink;
+			background-color: $white;
+			@include HCSS(sc, cp);
+		}
+		#intro_fandom_wrapper{
+			width: 800px;
+			margin-top: 122px;
+			@include HCSS(ch);
+		}
+		#intro_text_wrapper{
+			width: 201px;
+			margin-top: 28px;
+			@include HCSS(ch);
+		}
+		#intro_service_list{
+			width: 800px;
+			margin-top: 60px;
+			@include HCSS(ch);
+			div{
+				margin-left: 10px;
+				margin-right: 10px;
+				margin-bottom: 30px;
+				display: inline-block;
+				height: 45px;
+				border-radius: 23px;
+				padding: 0px 15px 0px 15px;
+				background-color: $lite_blue;
+				p{
+					color: $deep_blue;
+					line-height: 45px;
+					@extend .f1_nl;
+				}
+			}
+		}
+	}
+}

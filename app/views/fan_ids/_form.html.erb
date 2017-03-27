@@ -1,42 +1,20 @@
-<%= form_for(fan_id) do |f| %>
-  <% if fan_id.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(fan_id.errors.count, "error") %> prohibited this fan_id from being saved:</h2>
-
-      <ul>
-      <% fan_id.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :fandom_id %>
-    <%= f.text_field :fandom_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :fan_img %>
-    <%= f.text_field :fan_img %>
-  </div>
-
-  <div class="field">
-    <%= f.label :nickname %>
-    <%= f.text_field :nickname %>
-  </div>
-
-  <div class="field">
-    <%= f.label :msg %>
-    <%= f.text_field :msg %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<div>
+    <%= form_for fan_id do |f| %>
+        <%= f.hidden_field :fandom_id, required: "true" %>
+        <div></div>
+        <div class="JEditToggler">
+            <p><%= fan_id.nickname %></p>
+            <%= f.text_field :nickname, class: "hidden", required: "true" %>
+            <a>edit</a>            
+        </div>
+        <%= f.submit "Continue" %>
+    <% end %>
+</div>
+<div>
+    <% fandoms.each do |fandom| %>
+        <div class="JSelectId" obj_id="<%= fandom.id %>" target_input_obj="#fan_id_fandom_id">
+            <div></div>
+            <p><%= fandom.name %></p>
+        </div>
+    <% end %>
+</div>

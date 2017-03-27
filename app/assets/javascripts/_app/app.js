@@ -1,13 +1,34 @@
-$(document).ready(function(){
-	absolute_header_height = parseInt($("#absolute_header").css("height"));
-	var fix_header_height = parseInt($("#header").css("height"));
-	$("#main").css("padding-top", absolute_header_height+fix_header_height)
-	$("#header").css("top", absolute_header_height)
-	$("#absolute_header").css("height", absolute_header_height+fix_header_height/2)
-})
+function JSearchText(){
+	function search(value, target_objs){
+		$.each($(target_objs), function(i, obj){
+			$(obj).addClass("hidden");
+			if($(obj).attr("JSearchText").includes(value)){
+				$(obj).removeClass("hidden");
+			}
+		});
+	}
+	$(".JSearchText a").click(function(){
+		var input = $(this).parent().find(">input")
+		search(input.val(), $(this).attr("target_objs"));
+	});
+	$(".JSearchText input").keypress(function(e){
+		if(e.keyCode == '13'){ $(this).parent().find(">a").click(); }
+	});
+}
 
-$(window).scroll(function(){
-	var top = absolute_header_height-$(window).scrollTop();
-	if(top<=0){$("#header").css("top", "0px"); }
-	else{$("#header").css("top", top+"px"); }
-})
+
+function JEditToggler(){
+	$(".JEditToggler a").click(function(){
+		var input = $(this).parent().find(">input");
+		var p = $(this).parent().find(">p");
+		$([p, input]).toggleClass("hidden");
+		$(p).html($(input).val());
+	});
+}
+
+
+function JSelectId(){
+	$(".JSelectId").click(function(){
+		$($(this).attr("target_input_obj")).val($(this).attr("obj_id"));
+	});
+}

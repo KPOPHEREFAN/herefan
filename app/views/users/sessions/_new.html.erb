@@ -1,63 +1,70 @@
-<a class="lv-item social_login_button" href="/users/auth/twitter" methods="post">
-    <div class="media">
-        <div class="pull-left">
-            <i class="zmdi zmdi-twitter" style="font-size: 25px"></i>
-        </div>
-        <div class="media-body" style="padding-top: 2px; text-align: center;">
-            <div class="lv-title">Join with Twitter</div>
-        </div>
-    </div>
+<a data-toggle="dropdown" href="" aria-expanded="true">
+    <span>Join</span>
 </a>
-
-<a class="lv-item social_login_button" href="/users/auth/facebook" methods="post">
-    <div class="media">
-        <div class="pull-left">
-            <i class="zmdi zmdi-facebook" style="font-size: 25px"></i>
-        </div>
-        <div class="media-body" style="padding-top: 2px; text-align: center;">
-            <div class="lv-title">Join with Facebook</div>
-        </div>
+<div class="dropdown-menu pull-right dropdown-menu-lg">
+    <span class="dropdown_pointer"></span>
+    <div id="join_dropdown" class="listview">
+        <h1>Welcom to Here Fans!</h1>
+        <div class="login_form">
+            <a class="lv-item social_login_button" href="/users/auth/twitter" methods="post">
+                <div class="media">
+                    <div class="pull-left">
+                        <i class="zmdi zmdi-twitter" style="font-size: 25px"></i>
+                    </div>
+                    <div class="media-body" style="padding-top: 2px; text-align: center;">
+                        <div class="lv-title">Join with Twitter</div>
+                    </div>
+                </div>
+            </a>
+            <a class="lv-item social_login_button" href="/users/auth/facebook" methods="post">
+                <div class="media">
+                    <div class="pull-left">
+                        <i class="zmdi zmdi-facebook" style="font-size: 25px"></i>
+                    </div>
+                    <div class="media-body" style="padding-top: 2px; text-align: center;">
+                        <div class="lv-title">Join with Facebook</div>
+                    </div>
+                </div>
+            </a>
+            <a class="lv-item social_login_button" href="/users/auth/google_oauth2" methods="post">
+                <div class="media">
+                    <div class="pull-left">
+                        <i class="zmdi zmdi-google" style="font-size: 25px"></i>
+                    </div>
+                    <div class="media-body" style="padding-top: 2px; text-align: center;">
+                        <div class="lv-title">Join with Google</div>
+                    </div>
+                </div>
+            </a>
+            <div class="hr_with_text"> 
+                <hr> <span>or</span> <hr> 
+            </div>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="field">
+                    <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "dropdown_box_input" %>
+                </div>
+                <div class="field">
+                    <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "dropdown_box_input"  %>
+                </div>
+                <div class="left_and_right">
+                    <div>
+                        <%= f.check_box :remember_me %>
+                        <%= f.label :remember_me %>   
+                    </div>
+                    <div>
+                        <p style="margin-bottom:5px"><%= link_to "Forgot Password?", new_password_path(resource_name) %></p>  
+                    </div>
+                </div>
+                <div class="actions">
+                    <%= f.submit "Sign in", class: "dropdown_box_input"%>
+                </div>
+            <% end %>
+            <div class="signup_field">
+                <span>Not a Here Fans user yet?</span>  
+                <span>
+                    <%= link_to "Sign up", new_registration_path(resource_name) %>
+                </span>
+            </div>
+        </div>   
     </div>
-</a>
-
-<a class="lv-item social_login_button" href="/users/auth/google_oauth2" methods="post">
-    <div class="media">
-        <div class="pull-left">
-            <i class="zmdi zmdi-google" style="font-size: 25px"></i>
-        </div>
-        <div class="media-body" style="padding-top: 2px; text-align: center;">
-            <div class="lv-title">Join with Google</div>
-        </div>
-    </div>
-</a>
-
-
-<div class="hr_with_text"> 
-  <hr> <span>or</span> <hr> 
-</div>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.email_field :email, autofocus: true, placeholder: "Email", class: "dropdown_box_input" %>
-  </div>
-  <div class="field">
-    <%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "dropdown_box_input"  %>
-  </div>
-  <div class="left_and_right">
-    <div>
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>   
-    </div>
-    <div>
-       <p style="margin-bottom:5px"><%= link_to "Forgot Password?", new_password_path(resource_name) %></p>  
-    </div>
-  </div>
-  <div class="actions">
-    <%= f.submit "Sign in", class: "dropdown_box_input"%>
-  </div>
-<% end %>
-<div class="signup_field">
-  <span>Not a Here Fans user yet?</span>  
-  <span>
-    <%= link_to "Sign up", new_registration_path(resource_name) %>
-  </span>
 </div>

@@ -18,5 +18,4 @@ Rails.application.routes.draw do
     
     root 'home#index'
     get '/util/merge', to: "home#merge", as: 'merge'
-    get '/select_your_star', to: "home#select", as: 'fandom_select'
 end
